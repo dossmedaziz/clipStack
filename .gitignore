@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+/build/
+/dist/
+*.egg-info/
+.pybuild/
+debian/.debhelper/
+debian/clipstack/
+debian/files
+debian/*.substvars
+debian/*.debhelper.log
+debian/debhelper-build-stamp
+debian/*.debhelper

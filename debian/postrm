@@ -1,0 +1,31 @@
+#!/bin/sh
+# postrm for clipstack
+#
+# Packages must not touch users' home folders. Per-user data stays in
+#   ~/.local/share/clipstack   (history and images)
+#   ~/.config/clipstack        (settings)
+# and the per-user Super+B shortcut stays in GNOME's settings. See
+# /usr/share/doc/clipstack/README.md ("Uninstall") for how to remove them.
+set -e
+
+case "$1" in
+    purge)
+        # Leftovers from dpkg conffile prompts (the conffile itself is
+        # removed by dpkg).
+        rm -f /etc/xdg/autostart/clipstack-autostart.desktop.dpkg-old \
+              /etc/xdg/autostart/clipstack-autostart.desktop.dpkg-dist \
+              /etc/xdg/autostart/clipstack-autostart.desktop.dpkg-bak
+        echo "ClipStack purged. Per-user data is not removed automatically; each user can run:"
+        echo "  rm -rf ~/.local/share/clipstack ~/.config/clipstack"
+        ;;
+    remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+        ;;
+    *)
+        echo "postrm called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

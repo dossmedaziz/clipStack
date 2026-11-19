@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=ClipStack Clipboard Daemon
+Comment=Records your clipboard history for ClipStack
+Exec=clipstack daemon
+TryExec=/usr/bin/clipstack
+Icon=clipstack
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=2

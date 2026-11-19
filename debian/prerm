@@ -1,0 +1,25 @@
+#!/bin/sh
+# prerm for clipstack
+#
+# On removal, stop running ClipStack daemons so the clipboard is no longer
+# recorded by a program that is being uninstalled. On upgrade they are left
+# running (they pick up the new version at the next login).
+set -e
+
+case "$1" in
+    remove|deconfigure)
+        if command -v pkill >/dev/null 2>&1; then
+            pkill -TERM -f '^/usr/bin/python3[^ ]* /usr/bin/clipstack daemon' || true
+        fi
+        ;;
+    upgrade|failed-upgrade)
+        ;;
+    *)
+        echo "prerm called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

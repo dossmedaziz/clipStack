@@ -1,0 +1,4 @@
+# Default ignores (VCS dirs, build files) plus local helper files.
+tar-ignore
+tar-ignore = "CLAUDE_CODE_PROMPT.md"
+tar-ignore = "setup.sh"

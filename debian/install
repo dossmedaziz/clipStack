@@ -1,0 +1,3 @@
+data/clipstack.desktop usr/share/applications/
+data/clipstack-autostart.desktop etc/xdg/autostart/
+data/clipstack.svg usr/share/icons/hicolor/scalable/apps/

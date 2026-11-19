@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=ClipStack
+GenericName=Clipboard History
+Comment=Show your clipboard history (Super+B)
+Exec=clipstack show
+TryExec=clipstack
+Icon=clipstack
+Terminal=false
+Categories=Utility;GTK;
+Keywords=clipboard;history;copy;paste;emoji;
+StartupNotify=true
+StartupWMClass=io.github.clipstack.ClipStack

@@ -1,0 +1,49 @@
+.TH CLIPSTACK 1 "November 2026" "clipstack 1.0.0" "User Commands"
+.SH NAME
+clipstack \- Win+V style clipboard history for Ubuntu
+.SH SYNOPSIS
+.B clipstack
+.RB [ \-\-version ]
+.I command
+.SH DESCRIPTION
+.B clipstack
+records the text, links and images you copy and shows them in a small popup
+when you press Super+B. Choosing an item puts it back on the clipboard and
+pastes it into the window you were using.
+.SH COMMANDS
+.TP
+.BR daemon " [" \-v ]
+Watch the clipboard and record history. Started automatically at login.
+The first time it runs for a user it adds the Super+B shortcut (once).
+.TP
+.B show
+Open the history popup, or close it if it is already open.
+.TP
+.B clear
+Delete all history items except pinned ones.
+.TP
+.B setup\-shortcut
+Add the GNOME custom shortcut Super+B. Other shortcuts are not changed; if
+Super+B is already used, it prints what uses it and changes nothing.
+.TP
+.B remove\-shortcut
+Remove only the ClipStack shortcut.
+.SH KEYS IN THE POPUP
+Type to search, Up/Down to move, Enter to paste, Delete to remove an item,
+P (or Ctrl+P) to pin or unpin, Esc to close.
+.SH FILES
+.TP
+.I ~/.local/share/clipstack/history.db
+History database (SQLite).
+.TP
+.I ~/.local/share/clipstack/images/
+Copied images.
+.TP
+.I ~/.config/clipstack/config.json
+Settings: max_items, auto_paste, paste_delay_ms, max_item_bytes, ignore_apps,
+emoji_tab, popup_width, popup_height.
+.SH SEE ALSO
+.BR wl\-copy (1),
+.BR xclip (1),
+.BR xdotool (1),
+.BR ydotool (1)

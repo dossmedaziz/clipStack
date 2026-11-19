@@ -1,0 +1,24 @@
+#!/bin/sh
+# postinst for clipstack
+#
+# Keyboard shortcuts (gsettings) are per-user settings, so they cannot be set
+# here. The first time "clipstack daemon" runs for a user (at login), it adds
+# the Super+B shortcut once. Nothing in users' home folders is touched here.
+set -e
+
+case "$1" in
+    configure)
+        echo "ClipStack installed. Log out and back in (or run 'clipstack daemon &')"
+        echo "to start recording; then press Super+B to open the history."
+        ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+    *)
+        echo "postinst called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+# Debian build rules for ClipStack (pure Python, architecture independent).
+
+export PYBUILD_NAME=clipstack
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+# Run the unit tests from the source tree (they need no display).
+override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	python3 -m unittest discover -v -s tests -t .
+endif
